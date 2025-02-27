@@ -1,6 +1,15 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+const lightbox = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionSelector: 'img',
+  captionType: 'attr',
+  captionsData: 'alt',
+  animationSpeed: 250,
+  fadeSpeed: 250,
+});
+
 export function renderImages(images) {
   const gallery = document.querySelector('.gallery');
 
@@ -33,15 +42,5 @@ export function renderImages(images) {
     .join('');
 
   gallery.insertAdjacentHTML('beforeend', markup);
-
-  const lightbox = new SimpleLightbox('.gallery a', {
-    captions: true,
-    captionSelector: 'img',
-    captionType: 'attr',
-    captionsData: 'alt',
-    animationSpeed: 250,
-    fadeSpeed: 250,
-  });
-
   lightbox.refresh();
 }
